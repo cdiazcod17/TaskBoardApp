@@ -39,7 +39,7 @@ export const registrar = async (email, password) => {
         }
     }
 }
-
+// login
 export const login = async (email, password) => {
     try {
         const userCredentials = await signInWithEmailAndPassword(auth, email, password)

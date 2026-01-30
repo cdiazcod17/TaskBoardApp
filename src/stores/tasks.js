@@ -1,12 +1,24 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
-export const useCounterStore = defineStore('counter', () => {
-    const count = ref(0)
-    const doubleCount = computed(() => count.value * 2)
-    function increment() {
-        count.value++
+const API_URL = 'https://dummyjson.com/todos'
+
+
+export const useTasksApiStore = defineStore('apiTasks', () => {
+
+    const apiTasks = ref([])
+
+    const getTasks = async () => {
+        const response = await axios.get(API_URL)
+        apiTasks.value = response.data.todos
     }
 
-    return { count, doubleCount, increment }
+    const allTasks = computed(() => {
+        return apiTasks.value
+    }
+    )
+
+    return { allTasks, apiTasks, getTasks }
 })
+
