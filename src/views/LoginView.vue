@@ -52,7 +52,7 @@
                     </button>
                 </form>
 
-                <!-- Link a registro -->
+                <!-- registro -->
                 <div class="text-center mt-6 pt-6 border-t border-gray-200">
                     <p class="text-sm text-gray-600">
                         ¿No tienes cuenta?

@@ -1,22 +1,11 @@
 <template>
     <nav class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-6">
-            <!-- Logo -->
-            <span class="text-xl font-semibold">Mi App</span>
-
-            <!-- Links de navegación alineados a la izquierda -->
-            <div class="flex items-center gap-4">
-                <router-link to="/" class="text-gray-700 hover:text-gray-900">
-                    Home
-                </router-link>
-
-                <!-- Mostrar Login solo si NO hay sesión -->
-                <router-link to="/login"
-                    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-                    Login
-                </router-link>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-around items-center gap-4">
+            <router-link to="/home" class="text-4xl font-bold text-gray-900">
+                Task<span class="text-blue-600">Board</span>App
+            </router-link>
         </div>
+
     </nav>
 </template>
 
