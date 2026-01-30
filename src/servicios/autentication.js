@@ -76,6 +76,7 @@ export const logout = async () => {
 }
 
 export const estaAutenticado = () => {
+    console.log(usuario)
     return usuario.value !== null
 }
 

@@ -71,8 +71,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { registrar } from '@/servicios/autentication.js'
+import { ref, computed, onMounted } from 'vue'
+import { registrar, estaAutenticado } from '@/servicios/autentication.js'
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification'
 
@@ -87,6 +87,12 @@ const error = ref('')
 const exito = ref('')
 const cargando = ref(false)
 
+onMounted(() => {
+    if (estaAutenticado) {
+        router.push('/home')
+    }
+})
+
 const coinciden = computed(() => {
     return password.value === confirmPassword.value
 })
@@ -95,7 +101,7 @@ const registrarUsuario = async () => {
     error.value = ''
     exito.value = ''
 
-    //validacion basica
+
     if (!coinciden.value) {
         error.value = "Las contraseñas no coinciden"
         return //
@@ -110,8 +116,8 @@ const registrarUsuario = async () => {
     //ultimas comprobaciones
 
     if (resultado.ok) {
-        toast.success(`✅yes ${email.value} creado exitosamente, puede iniciar sesion`)
-        router.push('/login')
+        toast.success(`✅yes ${email.value} creado exitosamente`)
+        router.push('/home')
     } else {
         error.value = `❌oh no! error en los datos ingresados`
         email.value = ''

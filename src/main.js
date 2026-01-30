@@ -6,31 +6,45 @@ import App from './App.vue'
 import router from './router'
 import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '@/firebase/config'
 //los imports activan la funcion onAuthStateChanged
 //Significa que desde el principio se estara escuchando si hay un usuario logeado o no
-import '@/firebase/config.js'
-import '@/servicios/autentication.js'
-import { auth } from '@/firebase/config.js'
 
 
 const app = createApp(App)
+const pinia = createPinia()
 
-app.use(createPinia())
-app.use(router)
+app.use(pinia)
 
-app.use(Toast, {
-    position: 'top-center',
-    timeout: 2000,
-    closeOnClick: true,
-    pauseOnFocusLoss: true,
-    pauseOnHover: true,
-    draggable: true,
-    draggablePercent: 0.6,
-    showCloseButtonOnHover: false,
-    hideProgressBar: false,
-    closeButton: 'button',
-    icon: true,
-    rtl: false
+let isAuthReady = false
+
+onAuthStateChanged(auth, (user) => {
+    console.log('🔥 Firebase Auth Ready:', user?.email || 'No user')
+
+    if (!isAuthReady) {
+        isAuthReady = true
+        app.use(router)
+        app.use(Toast, {
+            position: 'top-center',
+            timeout: 2000,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: true,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: false,
+            closeButton: 'button',
+            icon: true,
+            rtl: false
+        })
+        app.mount('#app')
+    }
 })
 
-app.mount('#app')
+
+
+
+
+

@@ -4,7 +4,10 @@ import HeaderComponentVue from "./components/HeaderComponent.vue";
 
 <template>
   <HeaderComponentVue />
-  <router-view></router-view>
+  <main class="h-screen">
+
+    <router-view></router-view>
+  </main>
 </template>
 
 <style scoped></style>
