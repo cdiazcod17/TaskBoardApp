@@ -120,10 +120,10 @@ export const useUserTasksStore = defineStore('userTasks', () => {
 
     // Agregar tarea al usuario
     const addTask = async (taskId) => {
-        if (!currentUser.value) return { ok: false, error: 'No hay usuario autenticado' }
+        if (!usuario.value) return { ok: false, error: 'No hay usuario autenticado' }
 
         try {
-            const docRef = doc(db, 'usuarios', currentUser.value.uid)
+            const docRef = doc(db, 'usuarios', usuario.value.uid)
 
             // Verificar que el documento existe
             const docSnap = await getDoc(docRef)
@@ -131,7 +131,7 @@ export const useUserTasksStore = defineStore('userTasks', () => {
                 // Crear documento si no existe
                 await setDoc(docRef, {
                     tareas: [taskId],
-                    email: currentUser.value.email,
+                    email: usuario.value.email,
                     createdAt: new Date(),
                     updatedAt: new Date()
                 })
@@ -149,7 +149,7 @@ export const useUserTasksStore = defineStore('userTasks', () => {
             }
 
             // Actualizar asignaciones globales
-            allAssignedTasks.value[taskId] = currentUser.value.uid
+            allAssignedTasks.value[taskId] = usuario.value.uid
 
             return { ok: true }
         } catch (err) {
@@ -161,10 +161,10 @@ export const useUserTasksStore = defineStore('userTasks', () => {
 
     // Remover tarea del usuario
     const removeTask = async (taskId) => {
-        if (!currentUser.value) return { ok: false, error: 'No hay usuario autenticado' }
+        if (!usuario.value) return { ok: false, error: 'No hay usuario autenticado' }
 
         try {
-            const docRef = doc(db, 'usuarios', currentUser.value.uid)
+            const docRef = doc(db, 'usuarios', usuario.value.uid)
 
             // Remover taskId del array de tareas
             await updateDoc(docRef, {
