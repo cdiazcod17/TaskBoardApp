@@ -1,44 +1,166 @@
-# taskBoardCarlosDiaz
+# TaskBoardApp 🚀
 
-This template should help get you started developing with Vue 3 in Vite.
+**Gestor de tareas colaborativo** con autenticación, asignación de tareas y filtros. App full-stack moderna construida para portfolio de Formación Profesional DWEC/DWES.
 
-## Recommended IDE Setup
+## ✨ **Características principales**
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- 🔐 **Autenticación completa** con Firebase Auth + verificación de email
+- 📱 **Diseño 100% responsive** (móvil, tablet, desktop)
+- 🎨 **UI moderna** con TailwindCSS y animaciones suaves
+- 📊 **Gestión de tareas** con estados visuales dinámicos
+- 👥 **Sistema de asignación** (Mis tareas / Tareas de otros / Disponibles)
+- ⚡ **Estado reactivo** con Pinia stores
+- 🚀 **Rutas protegidas** (Home y Workspace solo para usuarios verificados)
 
-## Recommended Browser Setup
+## 🛠 **Tecnologías**
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+| Frontend | Backend | Estado | Estilos | Utils |
+|----------|---------|--------|---------|-------|
+| Vue 3 + Composition API | Firebase Firestore | Pinia | TailwindCSS | Vue Router |
+| Vue Toastification | Firebase Auth | Firebase Realtime | Headless UI | Vite |
 
-## Customize configuration
+## 📱 **Funcionalidades por pantalla**
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+### **Login/Register**
+```
+- Registro con email/password
+- Login con email/password  
+- Verificación de email obligatoria
+- Mensajes de error con toast
+- Redirección automática post-verificación
 ```
 
-### Compile and Hot-Reload for Development
+### **Home (Todas las tareas)**
+```
+- Lista completa de tareas (DummyJSON API)
+- Filtros: Pendientes / Completadas
+- Tarjetas responsive con hover effects
+- Checkbox dinámico por estado:
+  • ✅ Completada: Gris opacity-50
+  • ❌ Otro usuario: Rojo opacity-50  
+  • 👤 Mi usuario: Azul interactivo
+  • 🟢 Disponible: Verde interactivo
+```
 
-```sh
+### **Workspace (Mis tareas)**
+```
+- Solo tareas asignadas al usuario actual
+- CRUD básico (marcar completadas)
+- Store persistente en Firestore
+- Actualización en tiempo real
+```
+
+## 🎨 **Estados visuales del Checkbox**
+
+| Estado | Color | Interactivo | Clases Tailwind |
+|--------|-------|-------------|-----------------|
+| Completada | `accent-gray-400` | ❌ | `opacity-50` |
+| Asignada a otro | `accent-red-400` | ❌ | `opacity-50` |
+| Asignada a mí | `accent-blue-600` | ✅ | - |
+| Disponible | `accent-green-600` | ✅ | - |
+
+## 🚀 **Instalación rápida**
+
+```bash
+# Clonar repositorio
+git clone https://github.com/tuusuario/taskboardapp.git
+cd taskboardapp
+
+# Instalar dependencias
+npm install
+
+# Configurar Firebase (crea firebase/config.js)
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
+### **Variables de entorno**
+```
+VITE_FIREBASE_API_KEY=xxx
+VITE_FIREBASE_AUTH_DOMAIN=xxx
+VITE_FIREBASE_PROJECT_ID=xxx
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## 📂 **Estructura del proyecto**
 
-```sh
-npm run lint
 ```
+src/
+├── components/
+│   ├── HeaderNavbar.vue
+│   ├── TaskCard.vue
+│   └── LoginForm.vue
+├── stores/
+│   ├── tasks.js (API + filtros)
+│   └── userTasks.js (Firestore)
+├── views/
+│   ├── Home.vue
+│   ├── Workspace.vue
+│   └── Login.vue
+├── firebase/
+│   └── config.js
+└── router/
+    └── index.js (guard protegido)
+```
+
+## 🔐 **Flujo de autenticación**
+
+```mermaid
+graph TD
+    A[Login/Register] --> B{Email verificado?}
+    B -->|No| C[Reenviar email]
+    B -->|Sí| D[Home]
+    D --> E[Workspace]
+    E --> F[Logout → Login]
+```
+
+## 📊 **Stores principales**
+
+### **Tasks API Store**
+```javascript
+// Carga tareas desde DummyJSON
+const getTasks = async () => {
+  apiTasks.value = response.data.todos
+}
+```
+
+### **User Tasks Store** 
+```javascript
+// Persiste en Firestore: usuarios/uid/tareas: ["task1", "task5"]
+const addTask = async (taskId) => {
+  await updateDoc(docRef, { tareas: arrayUnion(taskId) })
+}
+```
+
+## 🎯 **Para desarrolladores**
+
+- **Customizar colores**: `tailwind.config.js`
+- **Añadir tareas reales**: Migrar de DummyJSON a Firestore
+- **Deploy**: Vercel/Netlify (Vite listo)
+- **Testing**: Vitest + @vue/testing-library
+
+## 📸 **Capturas**
+
+*(Añade aquí tus screenshots)*
+```
+Móvil: [screenshot-mobile.png]
+Desktop: [screenshot-desktop.png] 
+Workspace: [screenshot-workspace.png]
+```
+
+## 👨‍💻 **Autor**
+
+**Tu Nombre** - Estudiante FP Desarrollo Web  
+[LinkedIn](https://linkedin.com) | [GitHub](https://github.com/tuusuario)  
+*Proyecto para prácticas DWEC/DWES 2026*
+
+## 📄 **Licencia**
+
+MIT - ¡Siéntete libre de usarlo/forkearlo!
+
+***
+
+<div align="center">
+  <img src="https://img.shields.io/github/stars/tuusuario/taskboardapp?style=social" alt="Stars">
+  <img src="https://img.shields.io/github/forks/tuusuario/taskboardapp?style=social" alt="Forks">
+</div>
+
+**¡Gracias por revisar mi proyecto! 🚀** [perplexity](https://www.perplexity.ai/search/ac3d2bd9-2be4-412f-b003-77a4310eeb3d)

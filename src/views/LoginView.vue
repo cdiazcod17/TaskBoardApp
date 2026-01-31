@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { login, enviarEmailVerificacion, estaAutenticado } from '@/servicios/autentication.js';
+import { login, estaAutenticado } from '@/servicios/autentication.js';
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification'
@@ -76,7 +76,6 @@ const iniciarSesion = async () => {
     try {
         const resultado = await login(email.value, password.value)
         const usuario = resultado?.usuario?.user
-        const respuestaEmail = await enviarEmailVerificacion(usuario)
 
         cargando.value = false
 
