@@ -10,6 +10,8 @@ import {
 
 } from 'firebase/auth'
 
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
+import { db } from '@/firebase/config.js'
 
 // variable global del usuario
 const usuario = ref(null)
@@ -103,5 +105,39 @@ export const enviarEmailVerificacion = async (usuarioActual = null) => {
         }
     } catch (error) {
         console.log("❌ error al enviar email de verificacion", error)
+    }
+}
+
+// Agregar tarea al usuario (exportar si la necesitas fuera del store)
+export const assignTaskToUser = async (usuarioId, taskId) => {
+    try {
+        const docRef = doc(db, 'usuarios', usuarioId)
+        await updateDoc(docRef, {
+            tareas: arrayUnion(taskId),
+            updatedAt: new Date()
+        })
+        return { ok: true }
+    } catch (error) {
+        console.error('Error asignando tarea:', error)
+        return { ok: false, error: error.message }
+    }
+}
+
+// Obtener tareas del usuario
+export const getUserTasks = async (usuarioId) => {
+    try {
+        const docRef = doc(db, 'usuarios', usuarioId)
+        const docSnap = await getDoc(docRef)
+
+        if (docSnap.exists()) {
+            return {
+                ok: true,
+                tareas: docSnap.data().tareas || []
+            }
+        }
+        return { ok: true, tareas: [] }
+    } catch (error) {
+        console.error('Error obteniendo tareas:', error)
+        return { ok: false, error: error.message }
     }
 }

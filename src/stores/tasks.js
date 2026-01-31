@@ -7,6 +7,10 @@ const API_URL = 'https://dummyjson.com/todos'
 
 export const useTasksApiStore = defineStore('apiTasks', () => {
     const apiTasks = ref([])
+    const userTasks = ref([])
+    const loading = ref(false)
+    const error = ref(null)
+    const usuario = obtenerUsuario()
 
     const getTasks = async () => {
         const response = await axios.get(API_URL)
