@@ -4,8 +4,13 @@
             <router-link to="/home" class="text-4xl font-bold text-gray-900">
                 Task<span class="text-blue-600">Board</span>App
             </router-link>
-            <button @click="cerrarSesion" class="text-xl font-bold text-gray-900 cursor-pointer" v-if="usuario">Cerrar
-                Sesión</button>
+            <div class="flex flex-col">
+                <h5 class="font-bold text-gray-900"> Usuario: {{ usuario?.email }}</h5>
+                <button @click="cerrarSesion" class="text-xl font-bold text-gray-900 cursor-pointer"
+                    v-if="usuario">Cerrar
+                    Sesión
+                </button>
+            </div>
         </div>
 
 

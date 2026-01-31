@@ -15,6 +15,7 @@ export const useTasksApiStore = defineStore('apiTasks', () => {
     }
 
     const allTasks = computed(() => {
+        console.log(allTasks)
         return apiTasks.value
     }
     )
