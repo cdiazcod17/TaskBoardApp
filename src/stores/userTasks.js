@@ -93,9 +93,9 @@ export const useUserTasksStore = defineStore('userTasks', () => {
 
     // Verificar si una tarea está asignada a OTRO usuario
     const isTaskAssignedToOther = (taskId) => {
-        if (!currentUser.value) return false
+        if (!usuario.value) return false
         const assignedTo = allAssignedTasks.value[taskId]
-        return assignedTo && assignedTo !== currentUser.value.uid
+        return assignedTo && assignedTo !== usuario.value.uid
     }
 
     // Verificar si una tarea puede ser asignada

@@ -63,7 +63,7 @@
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/tuusuario/taskboardapp.git
+https://github.com/cdiazcod17/TaskBoardApp.git
 cd taskboardapp
 
 # Instalar dependencias
