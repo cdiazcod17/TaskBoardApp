@@ -141,11 +141,11 @@ const addTask = async (taskId) => {
 ## 📸 **Capturas**
 
 <!-- Mobile -->
-![Alt text](assets/desktop.png)
+![Alt text](./src/assets/desktop.png)
 <!-- Mobile -->
-![Alt text](assets/home.png)
+![Alt text](./src/assets/home.png)
 <!-- Mobile -->
-![Alt text](assets/mobile.png)
+![Alt text](./src/assets/mobile.png)
 
 
 ## 👨‍💻 **Autor**
