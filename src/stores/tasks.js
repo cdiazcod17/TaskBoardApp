@@ -1,25 +1,17 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
 const API_URL = 'https://dummyjson.com/todos'
 
-
 export const useTasksApiStore = defineStore('apiTasks', () => {
-
     const apiTasks = ref([])
 
     const getTasks = async () => {
         const response = await axios.get(API_URL)
         apiTasks.value = response.data.todos
+        console.log('tareas cargadas:', apiTasks.value)
     }
 
-    const allTasks = computed(() => {
-        console.log(allTasks)
-        return apiTasks.value
-    }
-    )
-
-    return { allTasks, apiTasks, getTasks }
+    return { apiTasks, getTasks }
 })
-

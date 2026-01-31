@@ -4,10 +4,10 @@
             <router-link to="/home" class="text-4xl font-bold text-gray-900">
                 Task<span class="text-blue-600">Board</span>App
             </router-link>
-            <div class="flex flex-col">
-                <h5 class="font-bold text-gray-900"> Usuario: {{ usuario?.email }}</h5>
-                <button @click="cerrarSesion" class="text-xl font-bold text-gray-900 cursor-pointer"
-                    v-if="usuario">Cerrar
+            <div class="flex flex-col" v-if="usuario">
+                <h5 class="text-blue-600 font-bold"> <span>Usuario:</span> {{ usuario?.email }}
+                </h5>
+                <button @click="cerrarSesion" class="text-xl font-bold text-gray-900 cursor-pointer">Cerrar
                     Sesión
                 </button>
             </div>
@@ -19,7 +19,6 @@
 
 <script setup>
 import { obtenerUsuario, logout } from '@/servicios/autentication.js';
-import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification'
 
