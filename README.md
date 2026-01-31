@@ -75,6 +75,7 @@ npm run dev
 
 ### **Variables de entorno**
 ```
+
 VITE_FIREBASE_API_KEY=xxx
 VITE_FIREBASE_AUTH_DOMAIN=xxx
 VITE_FIREBASE_PROJECT_ID=xxx
@@ -139,17 +140,18 @@ const addTask = async (taskId) => {
 
 ## 📸 **Capturas**
 
-*(Añade aquí tus screenshots)*
-```
-Móvil: [screenshot-mobile.png]
-Desktop: [screenshot-desktop.png] 
-Workspace: [screenshot-workspace.png]
-```
+<!-- Mobile -->
+![Alt text](assets/desktop.png)
+<!-- Mobile -->
+![Alt text](assets/home.png)
+<!-- Mobile -->
+![Alt text](assets/mobile.png)
+
 
 ## 👨‍💻 **Autor**
 
-**Tu Nombre** - Estudiante FP Desarrollo Web  
-[LinkedIn](https://linkedin.com) | [GitHub](https://github.com/tuusuario)  
+**Carlos Diaz** - Estudiante FP Desarrollo Web  
+[LinkedIn]www.linkedin.com/in/carlosdiaz0517 | [GitHub](https://github.com/cdiazcod17)  
 *Proyecto para prácticas DWEC/DWES 2026*
 
 ## 📄 **Licencia**
@@ -158,9 +160,5 @@ MIT - ¡Siéntete libre de usarlo/forkearlo!
 
 ***
 
-<div align="center">
-  <img src="https://img.shields.io/github/stars/tuusuario/taskboardapp?style=social" alt="Stars">
-  <img src="https://img.shields.io/github/forks/tuusuario/taskboardapp?style=social" alt="Forks">
-</div>
 
-**¡Gracias por revisar mi proyecto! 🚀** [perplexity](https://www.perplexity.ai/search/ac3d2bd9-2be4-412f-b003-77a4310eeb3d)
+**¡Gracias por revisar mi proyecto! 🚀** task-board-njzgh5wkf-cdiazcod17s-projects.vercel.app
