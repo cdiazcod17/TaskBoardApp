@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4">
+    <div class="p-4 w-full">
         <div>
             <select v-model="opcion" class="mb-4 border rounded px-2 py-1 text-sm">
                 <option value="todas">Todas</option>
@@ -10,7 +10,7 @@
         <div>
             <p>Tareas mostradas: {{ tareasFiltradas.length }}</p>
         </div>
-        <div class="flex flex-col gap-3">
+        <div class=" flex flex-wrap gap-3">
             <TaskCardComponent v-for="task in tareasFiltradas" :key="task.id" :task="task"
                 class="bg-white p-4 rounded-lg border-gray-200" />
         </div>

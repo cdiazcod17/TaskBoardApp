@@ -8,10 +8,9 @@
                     Task<span class="text-blue-600">Board</span>App
                 </router-link>
 
-                <!-- Movil -->
+                <!-- Toogle -->
                 <button @click="toggleMenu" v-if="usuario"
-                    class="lg:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    :aria-label="isMenuOpen ? 'Cerrar menú' : 'Abrir menú'">
+                    class="lg:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <svg class="w-6 h-6" :class="isMenuOpen ? 'text-blue-600' : 'text-gray-700'" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -23,7 +22,7 @@
 
                 <!-- DESKTOP -->
                 <div class="hidden lg:flex items-center gap-6" v-if="usuario">
-                    <div class="text-right flex flex-col gap-1">
+                    <div class="text-center flex flex-col gap-1">
                         <h5 class="text-blue-600 font-bold text-sm sm:text-base">
                             Usuario: {{ usuario?.email }}
                         </h5>
