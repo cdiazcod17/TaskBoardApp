@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { obtenerUsuario } from '@/servicios/autentication'
 
 const API_URL = 'https://dummyjson.com/todos'
 
