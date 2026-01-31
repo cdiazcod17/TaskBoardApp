@@ -24,7 +24,7 @@
 
             <!-- Botón eliminar -->
             <button @click="handleRemove" :disabled="isRemoving"
-                class="bg-red-500 hover:bg-red-600 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded transition text-sm flex-shrink-0"
+                class="bg-red-500 hover:bg-red-600 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded transition text-sm flex shrink-0"
                 title="Eliminar de mis tareas">
                 {{ isRemoving ? 'Eliminando...' : 'Eliminar' }}
             </button>
