@@ -90,11 +90,15 @@ const iniciarSesion = async () => {
 
             setTimeout(() => {
                 router.push('/home')
-            }, 2000)
+            }, 1500)
+        } else {
+            toast.error(resultado.error || 'Error al iniciar sesión')
         }
 
     } catch (error) {
-        toast.error('Error al iniciar sesión. Intenta nuevamente')
+        toast.error('Error de conexión. Revisa tu internet')
+        console.error('Network error:', error)
+    } finally {
         cargando.value = false
     }
 }

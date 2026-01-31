@@ -57,7 +57,8 @@ export const login = async (email, password) => {
         console.log('Error verifique los datos ❌', error);
         return {
             ok: false,
-            error: 'usuario no creado'
+            error: error.message,
+            code: error.code
         }
     }
 }
