@@ -24,7 +24,7 @@
                 <div class="hidden lg:flex items-center gap-6" v-if="usuario">
                     <div class="text-center flex flex-col gap-1">
                         <h5 class="text-blue-600 font-bold text-sm sm:text-base">
-                            Usuario: {{ usuario?.email }}
+                            Usuario: {{ usuario?.email.split('@')[0] }}
                         </h5>
 
                         <router-link to="/workspace"
