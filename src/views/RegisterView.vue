@@ -88,7 +88,7 @@ const exito = ref('')
 const cargando = ref(false)
 
 onMounted(() => {
-    if (estaAutenticado) {
+    if (estaAutenticado()) {
         router.push('/home')
     }
 })

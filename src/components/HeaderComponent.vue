@@ -5,7 +5,7 @@
                 Task<span class="text-blue-600">Board</span>App
             </router-link>
             <button @click="cerrarSesion" class="text-xl font-bold text-gray-900 cursor-pointer" v-if="usuario">Cerrar
-                Sesion</button>
+                Sesión</button>
         </div>
 
 
@@ -27,7 +27,7 @@ const cerrarSesion = async () => {
     const resultado = await logout()
 
     if (resultado.ok) {
-        toast.info('Sesión cerrada')
+        toast.info('Sesión finalizada')
         router.push('/login')
     }
 }

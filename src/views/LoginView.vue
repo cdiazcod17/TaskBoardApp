@@ -64,11 +64,11 @@ const password = ref('')
 const cargando = ref(false)
 
 
-// onMounted(() => {
-//     if (estaAutenticado()) {
-//         router.push('/home')
-//     }
-// })
+onMounted(() => {
+    if (estaAutenticado()) {
+        router.push('/home')
+    }
+})
 
 const iniciarSesion = async () => {
     cargando.value = true
@@ -83,15 +83,15 @@ const iniciarSesion = async () => {
         if (resultado.ok) {
             toast.success(`Bienvenido ${email.value}`)
 
-            if (!usuario.emailVerified) {
-                toast.warning('Tu email aún no está verificado. Revisa tu bandeja de entrada.')
-            } else {
-                toast.success('¡Bienvenido de vuelta!')
-            }
+            setTimeout(() => {
+                if (!usuario.emailVerified) {
+                    toast.warning('Tu email aún no está verificado. Revisa tu bandeja de entrada.')
+                }
+            }, 1000)
 
             setTimeout(() => {
                 router.push('/home')
-            }, 500)
+            }, 2000)
         }
 
     } catch (error) {

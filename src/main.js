@@ -20,8 +20,6 @@ app.use(pinia)
 let isAuthReady = false
 
 onAuthStateChanged(auth, (user) => {
-    console.log('🔥 Firebase Auth Ready:', user?.email || 'No user')
-
     if (!isAuthReady) {
         isAuthReady = true
         app.use(router)
